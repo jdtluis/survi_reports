@@ -89,6 +89,8 @@ if __name__ == '__main__':
                                            sheet_name="Reporte volumen" if type == "volume" else "Tiempo en pantalla")
                     elif type == 'volume':
                         total_member = get_volume_total(token, temp, trading_sessions)
+                        total_member['ADV'] = total_member['ADV'].round(0)
+                        total_member['RatioAgresor'] = total_member['RatioAgresor'].round(2)
                         total_member['Fecha_Desde'] = from_date
                         total_member['Fecha_Hasta'] = to_date
                         total_member[['ADV', 'RatioAgresor', 'Fecha_Desde', 'Fecha_Hasta']].to_excel(excel_mmk,
